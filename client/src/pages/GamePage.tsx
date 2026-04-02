@@ -1,5 +1,6 @@
 import Question from "../components/Question";
 import { useState } from "react";
+import { questionData } from "../data/questions";
 
 interface QuestionProps {
 	id: number;
@@ -9,26 +10,12 @@ interface QuestionProps {
 }
 
 function GamePage() {
-	const questions: QuestionProps[] = [
-		{
-			id: 0,
-			question: "Question 1",
-			choices: ["Choice 1", "Choice 2", "Choice 3"],
-			correctAnswerId: 2,
-		},
-		{
-			id: 1,
-			question: "Question 2",
-			choices: ["Choice 1", "Choice 2", "Choice 3"],
-			correctAnswerId: 1,
-		},
-		{
-			id: 2,
-			question: "Question 3",
-			choices: ["Choice 1", "Choice 2", "Choice 3"],
-			correctAnswerId: 0,
-		},
-	];
+	const questions: QuestionProps[] = questionData.map((question) => ({
+		id: question.id,
+		question: question.question,
+		choices: question.choices,
+		correctAnswerId: question.correctIndex,
+	}));
 
 	const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 

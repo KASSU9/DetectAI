@@ -72,7 +72,7 @@ function Question({
 				<button
 					type="button"
 					className={
-						isAnswerChecked
+						isAnswerChecked && id + 1 < length
 							? "btn btn-secondary"
 							: "btn btn-secondary disabled"
 					}
