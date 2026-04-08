@@ -1,0 +1,44 @@
+import { questionData } from "../data/questions";
+import Quizes from "../components/Quizes";
+
+interface Quiz {
+	id: number;
+	title: string;
+	difficulty: string;
+}
+
+interface QuizData {
+	quiz: Quiz;
+}
+
+function QuizesPage() {
+	const questions: QuizData[] = questionData.map((question) => ({
+		quiz: question.quiz,
+	}));
+
+	return (
+		<>
+			<h1>Quizes</h1>
+			<h2>Easy quizes</h2>
+			<Quizes
+				quizes={questions
+					.filter((q) => q.quiz.difficulty === "easy")
+					.map((q) => q.quiz)}
+			/>
+			<h2>Medium quizes</h2>
+			<Quizes
+				quizes={questions
+					.filter((q) => q.quiz.difficulty === "medium")
+					.map((q) => q.quiz)}
+			/>
+			<h2>Hard quizes</h2>
+			<Quizes
+				quizes={questions
+					.filter((q) => q.quiz.difficulty === "hard")
+					.map((q) => q.quiz)}
+			/>
+		</>
+	);
+}
+
+export default QuizesPage;

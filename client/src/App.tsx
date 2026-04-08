@@ -2,13 +2,14 @@ import Navbar from "./components/Navbar";
 import NotFoundPage from "./pages/NotFoundPage";
 import AboutPage from "./pages/AboutPage";
 import GuidePage from "./pages/GuidePage";
-import GamePage from "./pages/GamePage";
+import QuizesPage from "./pages/QuizesPage";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import QuizPage from "./pages/QuizPage";
 
 const router = createBrowserRouter([
 	{
 		path: "/",
-		element: <GamePage />,
+		element: <QuizesPage />,
 		errorElement: <NotFoundPage />,
 	},
 	{
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
 	{
 		path: "/about",
 		element: <AboutPage />,
+	},
+	{
+		path: "/quizes/:id",
+		element: <QuizPage />,
 	},
 ]);
 
