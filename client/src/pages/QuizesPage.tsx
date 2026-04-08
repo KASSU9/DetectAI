@@ -28,7 +28,7 @@ function QuizesPage() {
 			<h2>Medium quizes</h2>
 			<Quizes
 				quizes={questions
-					.filter((q) => q.quiz.difficulty === "medium")
+					.filter((q) => q.quiz.difficulty === "normal")
 					.map((q) => q.quiz)}
 			/>
 			<h2>Hard quizes</h2>

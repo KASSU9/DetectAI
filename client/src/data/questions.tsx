@@ -38,7 +38,7 @@ export const questionData = [
 		quiz: {
 			id: 1,
 			title: "Second Quiz",
-			difficulty: "medium",
+			difficulty: "normal",
 		},
 		questions: [
 			{
