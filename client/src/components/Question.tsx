@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Progressbar from "./Progressbar";
 
 interface QuestionProps {
 	id: number;
@@ -19,6 +20,7 @@ function Question({
 }: QuestionProps) {
 	const [currentSelectedIndex, setSelectedIndex] = useState(-1);
 	const [isAnswerChecked, setIsAnswerChecked] = useState(false);
+	const [progressId, setProgressId] = useState(0);
 
 	const getChoiceClassName = (index: number) => {
 		if (!isAnswerChecked) {
@@ -43,6 +45,7 @@ function Question({
 			<div className="card-header">
 				<h2>
 					Questions number {id + 1} of {length}
+					<Progressbar current={progressId} total={length} />
 				</h2>
 			</div>
 			<div className="card-body">
@@ -65,7 +68,10 @@ function Question({
 				<button
 					type="button"
 					className="btn btn-secondary"
-					onClick={() => setIsAnswerChecked(true)}
+					onClick={() => {
+						setIsAnswerChecked(true);
+						setProgressId((prev) => prev + 1);
+					}}
 				>
 					Check answer
 				</button>
