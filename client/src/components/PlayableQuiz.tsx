@@ -10,7 +10,7 @@ interface QuestionProps {
 	onNextQuestion: (index: number) => void;
 }
 
-function Question({
+function PlayableQuiz({
 	id,
 	question,
 	choices,
@@ -68,24 +68,22 @@ function Question({
 				<button
 					type="button"
 					className="btn btn-secondary"
+					disabled={isAnswerChecked || currentSelectedIndex === -1}
 					onClick={() => {
 						setIsAnswerChecked(true);
-						setProgressId((prev) => prev + 1);
+						setProgressId((prevId) => prevId + 1);
 					}}
 				>
 					Check answer
 				</button>
 				<button
 					type="button"
-					className={
-						isAnswerChecked && id + 1 < length
-							? "btn btn-secondary"
-							: "btn btn-secondary disabled"
-					}
+					className="btn btn-secondary"
+					disabled={!isAnswerChecked}
 					onClick={() => {
-						(onNextQuestion(currentSelectedIndex),
-							setIsAnswerChecked(false),
-							setSelectedIndex(-1));
+						onNextQuestion(currentSelectedIndex);
+						setIsAnswerChecked(false);
+						setSelectedIndex(-1);
 					}}
 				>
 					Next question
@@ -95,4 +93,4 @@ function Question({
 	);
 }
 
-export default Question;
+export default PlayableQuiz;

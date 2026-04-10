@@ -1,5 +1,5 @@
 import { questionData } from "../data/questions";
-import Quizes from "../components/Quizes";
+import QuizesList from "../components/QuizesList";
 
 interface Quiz {
 	id: number;
@@ -20,19 +20,19 @@ function QuizesPage() {
 		<>
 			<h1>Quizes</h1>
 			<h2>Easy quizes</h2>
-			<Quizes
+			<QuizesList
 				quizes={questions
 					.filter((q) => q.quiz.difficulty === "easy")
 					.map((q) => q.quiz)}
 			/>
 			<h2>Medium quizes</h2>
-			<Quizes
+			<QuizesList
 				quizes={questions
 					.filter((q) => q.quiz.difficulty === "normal")
 					.map((q) => q.quiz)}
 			/>
 			<h2>Hard quizes</h2>
-			<Quizes
+			<QuizesList
 				quizes={questions
 					.filter((q) => q.quiz.difficulty === "hard")
 					.map((q) => q.quiz)}

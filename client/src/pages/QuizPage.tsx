@@ -1,7 +1,8 @@
 import { questionData } from "../data/questions";
-import Question from "../components/Question";
+import PlayableQuiz from "../components/PlayableQuiz";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
+import QuizCompleted from "../components/QuizCompleted";
 
 interface Quiz {
 	id: number;
@@ -30,36 +31,52 @@ function QuizPage() {
 	const params = useParams<{ id: string }>();
 
 	const quizId = parseInt(params.id || "0", 10); // TODO: handle invalid id
+	const selectedQuiz = questions[quizId];
 
 	const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+	const [score, setScore] = useState(0);
+	const [isQuizCompleted, setIsQuizCompleted] = useState(false);
 
-	const handleNextQuestion = () => {
-		setCurrentQuestionIndex((currentIndex) =>
-			Math.min(currentIndex + 1, questions[quizId].questions.length - 1),
-		);
+	const handleNextQuestion = (selectedIndex: number) => {
+		const currentQuestion = selectedQuiz.questions[currentQuestionIndex];
+
+		if (selectedIndex === currentQuestion.correctIndex) {
+			setScore((prevScore) => prevScore + 1);
+		}
+
+		if (currentQuestionIndex + 1 >= selectedQuiz.questions.length) {
+			setIsQuizCompleted(true);
+			return;
+		}
+
+		setCurrentQuestionIndex((currentIndex) => currentIndex + 1);
 	};
 
 	return (
 		<>
 			<div>
-				<h1>{questions[quizId].quiz.title}</h1>
+				<h1>{selectedQuiz.quiz.title}</h1>
 			</div>
 			<div>
-				<Question
-					id={questions[quizId].questions[currentQuestionIndex].id}
+				{isQuizCompleted && (
+					<QuizCompleted
+						score={score}
+						total={selectedQuiz.questions.length}
+					/>
+				)}
+				<PlayableQuiz
+					id={selectedQuiz.questions[currentQuestionIndex].id}
 					question={
-						questions[quizId].questions[currentQuestionIndex]
-							.question
+						selectedQuiz.questions[currentQuestionIndex].question
 					}
 					choices={
-						questions[quizId].questions[currentQuestionIndex]
-							.choices
+						selectedQuiz.questions[currentQuestionIndex].choices
 					}
 					correctAnswerId={
-						questions[quizId].questions[currentQuestionIndex]
+						selectedQuiz.questions[currentQuestionIndex]
 							.correctIndex
 					}
-					length={questions[quizId].questions.length}
+					length={selectedQuiz.questions.length}
 					onNextQuestion={handleNextQuestion}
 				/>
 			</div>

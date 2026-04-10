@@ -10,7 +10,7 @@ interface QuizzesProps {
 	quizes: Quiz[];
 }
 
-function Quizes(props: QuizzesProps) {
+function QuizesList(props: QuizzesProps) {
 	return (
 		<div>
 			<ul className="list-group">
@@ -33,4 +33,4 @@ function Quizes(props: QuizzesProps) {
 	);
 }
 
-export default Quizes;
+export default QuizesList;
