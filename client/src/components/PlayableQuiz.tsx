@@ -86,7 +86,7 @@ function PlayableQuiz({
 						setSelectedIndex(-1);
 					}}
 				>
-					Next question
+					{progressId < length - 1 ? "Next question" : "Finish quiz"}
 				</button>
 			</div>
 		</div>
