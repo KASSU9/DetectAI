@@ -135,7 +135,7 @@ function GuidePage() {
 								aria-expanded="false"
 								aria-controls="panelsStayOpen-collapseFour"
 							>
-								Starting with heavy compliments
+								Using compliments in an unnatural way
 							</button>
 						</h2>
 						<div
@@ -144,12 +144,24 @@ function GuidePage() {
 						>
 							<div className="accordion-body">
 								Starting with heavy compliments is another sign
-								of AI-generated content [1].
+								of AI-generated content [1]. Another way that
+								this can manifest is by using a lot of positive
+								adjectives, especially for people [2].
 								<br></br>
 								<br></br>
-								Example: <br></br>
+								Examples: <br></br>
 								"That is a fantastic question! I'm glad you
 								asked it. The answer is..."
+								<br></br>
+								<br></br>
+								Human: "Black Sabbath is considered to be one of
+								the pioneers of heavy metal music, who
+								revolutionzied the genre."
+								<br></br>
+								AI: "Black Sabbath is widely celebrated as a
+								towering pioneer of heavy metal, a visionary
+								force that not only revolutionized the genre but
+								also defined its very soul"
 							</div>
 						</div>
 					</div>
@@ -251,6 +263,55 @@ function GuidePage() {
 							</div>
 						</div>
 					</div>
+					<div className="accordion-item">
+						<h2 className="accordion-header">
+							<button
+								className="accordion-button collapsed"
+								type="button"
+								data-bs-toggle="collapse"
+								data-bs-target="#panelsStayOpen-collapseEight"
+								aria-expanded="false"
+								aria-controls="panelsStayOpen-collapseEight"
+							>
+								Using made up references that don't exist
+							</button>
+						</h2>
+						<div
+							id="panelsStayOpen-collapseEight"
+							className="accordion-collapse collapse"
+						>
+							<div className="accordion-body">
+								This is often manifested in links that don't
+								work, made-up ISBNs with wrong checksums or
+								non-existing DOIs [2].
+								<br></br>
+								<br></br>
+								Example: <br></br>
+								Human: "DetectAI is a game that helps you to
+								spot signs of AI-generated content.
+								<br></br>
+								<a
+									href="/about"
+									target="_blank"
+									rel="noopener noreferrer"
+								>
+									Source
+								</a>
+								"<br></br>
+								AI: "DetectAI is a game that helps you to spot
+								signs of AI-generated content.
+								<br></br>
+								<a
+									href="/aboout-us"
+									target="_blank"
+									rel="noopener noreferrer"
+								>
+									Source
+								</a>
+								"
+							</div>
+						</div>
+					</div>
 				</div>
 				<div>
 					<h3>Sources used:</h3>
@@ -264,6 +325,15 @@ function GuidePage() {
 						>
 							I Can Spot AI Writing Instantly — Here’s How You Can
 							Too
+						</a>
+					</li>
+					<li>
+						<a
+							href="https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing"
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							Wikipedia:Signs of AI writing
 						</a>
 					</li>
 				</ol>
